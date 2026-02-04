@@ -1,0 +1,3 @@
+getCurrentYear();
+updateFooterYear();
+toggleTheme();
