@@ -9,7 +9,7 @@ document.body.addEventListener('click', () => {
 // 1. Função para alternar tema
 function toggleTheme() {
     // Adiciona/remove classe dark-mode do body
-    document.body.classList.toggle('dark-mode');
+    document.body.classList.toggle("dark-mode");
     
     // Verifica se está em dark mode
     const isDark = document.body.classList.contains('dark-mode');
