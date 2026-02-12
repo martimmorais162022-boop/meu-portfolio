@@ -401,7 +401,7 @@ function renderProjects(projectsToRender) {
     noResults.style.display = 'none';
     
     // Criar card para cada projeto
-    projectsToRender.forEach(project => {
+        projectsToRender.forEach(project => {
         const card = createProjectCard(project);
         grid.appendChild(card);
     });
@@ -498,43 +498,105 @@ document.addEventListener('DOMContentLoaded', () => {
     setupFilterListeners();  // ADICIONAR ESTA LINHA
     console.log('✅ Filtros configurados!');
 });
-// Versão com animação de saída
-function renderProjects(projectsToRender) {
-    const grid = document.getElementById('projects-grid');
-    const noResults = document.getElementById('no-results');
+// ===== SISTEMA DE MODAL =====
+
+function openModal(projectId) {
+    // Encontrar projeto pelo ID
+    const project = projects.find(p => p.id === projectId);
     
-    // Fade out dos cards existentes
-    const existingCards = grid.querySelectorAll('.project-card');
-    existingCards.forEach((card, index) => {
-        setTimeout(() => {
-            card.style.animation = 'fadeOut 0.3s ease forwards';
-        }, index * 50);
-    });
+    if (!project) {
+        console.error('Projeto não encontrado!');
+        return;
+    }
     
-    // Esperar animação terminar antes de limpar
-    setTimeout(() => {
-        grid.innerHTML = '';
+    // Preencher conteúdo do modal
+    const modalBody = document.getElementById('modal-body');
+    modalBody.innerHTML = `
+        <span class="modal-category">${project.category}</span>
+        <h2>${project.title}</h2>
+        <img src="${project.image}" alt="${project.title}" class="modal-image">
         
-        if (projectsToRender.length === 0) {
-            noResults.style.display = 'block';
-            return;
-        }
+        <div class="modal-section">
+            <h3>Sobre o Projeto</h3>
+            <p>${project.longDescription}</p>
+        </div>
         
-        noResults.style.display = 'none';
+        <div class="modal-section">
+            <h3>Funcionalidades</h3>
+            <ul>
+                ${project.features.map(feature => `<li>${feature}</li>`).join('')}
+            </ul>
+        </div>
         
-        projectsToRender.forEach(project => {
-            const card = createProjectCard(project);
-            grid.appendChild(card);
-        });
+        <div class="modal-section">
+            <h3>Tecnologias Utilizadas</h3>
+            <div class="modal-tech">
+                ${project.technologies.map(tech => `<span class="tech-badge">${tech}</span>`).join('')}
+            </div>
+        </div>
         
-        updateCounters();
-    }, existingCards.length * 50 + 300);
+        <a href="${project.link}" target="_blank" class="modal-link">
+            Ver Projeto Completo →
+        </a>
+    `;
+    
+    // Mostrar modal
+    const modal = document.getElementById('project-modal');
+    modal.classList.add('active');
+    
+    // Prevenir scroll do body
+    document.body.style.overflow = 'hidden';
+    
+    console.log(`Modal aberto: ${project.title}`);
 }
 
-// CSS adicional
-@keyframes fadeOut {
-    to {
-        opacity: 0;
-        transform: translateY(-20px);
-    }
+function closeModal() {
+    const modal = document.getElementById('project-modal');
+    modal.classList.remove('active');
+    
+    // Restaurar scroll
+    document.body.style.overflow = 'auto';
+    
+    console.log('Modal fechado');
 }
+
+// ===== EVENT LISTENERS DO MODAL =====
+
+function setupModalListeners() {
+    // Event Delegation nos cards
+    const grid = document.getElementById('projects-grid');
+    grid.addEventListener('click', (e) => {
+        const card = e.target.closest('.project-card');
+        if (card) {
+            const projectId = parseInt(card.dataset.id);
+            openModal(projectId);
+        }
+    });
+    
+    // Fechar modal ao clicar no X
+    const closeBtn = document.querySelector('.modal-close');
+    closeBtn.addEventListener('click', closeModal);
+    
+    // Fechar modal ao clicar fora (no overlay)
+    const modal = document.getElementById('project-modal');
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            closeModal();
+        }
+    });
+    
+    // Fechar modal com tecla Escape
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            closeModal();
+        }
+    });
+}
+
+// Adicionar ao DOMContentLoaded
+document.addEventListener('DOMContentLoaded', () => {
+    renderProjects(projects);
+    setupFilterListeners();
+    setupModalListeners();  // ADICIONAR ESTA LINHA
+    console.log('✅ Modal configurado!');
+});
