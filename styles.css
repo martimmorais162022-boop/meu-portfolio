@@ -155,7 +155,7 @@ footer {
 /* ===== TEMA ESCURO ===== */
 body.dark-mode {
     --bg-primary: #000000;
-    --bg-secondary: #2d2929;
+    --bg-secondary: #ffffff;
     --text-primary: #f9fafb;
     --text-secondary: #d1d5db;
     --accent: #818cf8;
@@ -341,7 +341,7 @@ body.dark-mode .icon-light {
 
 .filter-btn.active {
     background: var(--primary);
-    color: white;
+        color: white;
     border-color: var(--primary);
 }
 
@@ -453,6 +453,7 @@ body.dark-mode .icon-light {
             font-size: 1.3em;
         }
 
+    
         .project-description {
             color: var(--gray);
             margin-bottom: 15px;
@@ -467,7 +468,7 @@ body.dark-mode .icon-light {
 
         .tag {
             background: var(--light);
-            color: var(--dark);
+            color: var(#ffffff);
             padding: 5px 12px;
             border-radius: 12px;
             font-size: 0.8em;
@@ -693,3 +694,143 @@ body.dark-mode .icon-light {
                 width: 95%;
             }
         }
+:root {
+    --primary: #1B211A;      
+    --secondary: #84ff00;     
+    --bg-primary: #ffffff;
+    --bg-secondary: #f4f4f5;
+    --text-primary: #18181b;
+    --text-secondary: #71717a;
+    --border: #e4e4e7;
+    --hero-gradient: linear-gradient(135deg, #1B211A 0%, #84ff00 100%);
+}
+
+body.dark-mode {
+    --bg-primary: hsl(0, 0%, 0%);
+    --bg-secondary: #1b1b1e;
+    --text-primary: #f4f4f5;
+    --text-secondary: #a1a1aa;
+    --border: #0a1641;
+    --hero-gradient: linear-gradient(135deg, #000000 0%, #222222 100%);
+}
+
+/* Base */
+body {
+    font-family: sans-serif;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    transition: all 0.3s ease;
+    margin: 0;  
+}
+
+header {
+    background: var(--bg-secondary);
+    padding: 1rem;
+    border-bottom: 1px solid var(--border);
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+nav ul { display: flex; list-style: none; gap: 20px; }
+nav a { text-decoration: none; color: inherit; font-weight: bold; }
+
+.hero {
+    background: var(--hero-gradient);
+    color: white;
+    text-align: center;
+    padding: 60px 20px;
+}
+
+/* Barra de Pesquisa Fixada */
+.search-box {
+    position: relative;
+    min-width: 250px;
+}
+
+.search-box::before {
+    content: '🔍';
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none; /* Deixa clicar no input */
+    z-index: 2;
+}
+
+#search-input {
+    width: 100%;
+    padding: 10px 15px 10px 40px;
+    border-radius: 20px;
+    border: 2px solid var(--border);
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    outline: none;
+}
+
+#search-input:focus {
+    border-color: var(--secondary);
+}
+
+/* Grid & Cards */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.project-card {
+    background: var(--bg-secondary);
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    border: 1px solid var(--border);
+    transition: transform 0.2s;
+}
+
+.project-card:hover { transform: translateY(-5px); }
+.project-card img { width: 100%; height: 180px; object-fit: cover; }
+.project-card-body { padding: 15px; }
+
+.theme-toggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 15px;
+    border-radius: 50%;
+    cursor: pointer;
+    background: var(--secondary);
+    border: none;
+}
+
+body.dark-mode .icon-light { display: none; }
+body:not(.dark-mode) .icon-dark { display: none; }
+
+.no-results { display: none; text-align: center; padding: 40px; }
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    top:0; left:0; width:100%; height:100%;
+    background: rgba(255, 255, 255, 0.8);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+}
+.modal.active { display: flex; }
+.modal-content {
+    background: var(--bg-primary);
+    padding: 30px;
+    border-radius: 15px;
+    max-width: 600px;
+    position: relative;
+}
+.modal-close { position: absolute; right: 20px; top: 10px; font-size: 30px; cursor: pointer; }

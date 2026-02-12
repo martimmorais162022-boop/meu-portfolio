@@ -3,13 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Portfolio de Martim Morais - Desenvolvedor Web">
     <title>Martim Morais - Portfolio</title>
     <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
-    <!-- HEADER -->
     <header>
         <nav>
             <h1>Martim Morais</h1>
@@ -21,89 +18,56 @@
         </nav>
     </header>
 
-    <!-- BOTÃO TEMA -->
     <button id="theme-toggle" class="theme-toggle" aria-label="Alternar tema">
         <span class="icon-light">☀️</span>
         <span class="icon-dark">🌙</span>
     </button>
 
-    <!-- HERO -->
     <section class="hero">
         <h1>Olá! Sou Martim Morais 👋</h1>
-        <p>Desenvolvedor Web | Estudante | Criativo</p>
+        <p>Desenvolvedor Web | Estudante | Java Enthusiast</p>
     </section>
 
-    <!-- SOBRE MIM -->
     <section id="about" class="about">
         <h2>Sobre Mim</h2>
-        <p>Sou um aprendiz de Java no seu melhor momento de criar um programa</p>
+        <p>Sou um aprendiz de Java focado em criar soluções criativas.</p>
 
-        <!-- RELÓGIO -->
         <div class="clock-container">
             <div class="clock">
                 <span id="hours">00</span>:<span id="minutes">00</span>:<span id="seconds">00</span>
             </div>
             <button id="format-toggle" class="format-toggle">12h/24h</button>
         </div>
-
         <div id="date" class="date"></div>
     </section>
 
-    <!-- PROJETOS -->
     <section id="projects" class="projects">
-    <h2>Meus Projetos</h2>
-    
-    <!-- Barra de controlo (filtros + pesquisa) -->
-    <div class="projects-controls">
-        <div class="filter-buttons">
-            <button class="filter-btn active" data-category="all">
-                Todos <span class="count">0</span>
-            </button>
-            <button class="filter-btn" data-category="web">
-                Web <span class="count">0</span>
-            </button>
-            <button class="filter-btn" data-category="mobile">
-                Mobile <span class="count">0</span>
-            </button>
-            <button class="filter-btn" data-category="design">
-                Design <span class="count">0</span>
-            </button>
+        <h2>Meus Projetos</h2>
+        <div class="projects-controls">
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-category="all">Todos <span class="count">0</span></button>
+                <button class="filter-btn" data-category="web">Web <span class="count">0</span></button>
+                <button class="filter-btn" data-category="mobile">Mobile <span class="count">0</span></button>
+                <button class="filter-btn" data-category="design">Design <span class="count">0</span></button>
+            </div>
+            
+            <div class="search-box">
+                <input type="text" id="search-input" placeholder="Pesquisar projetos...">
+            </div>
         </div>
         
-        <div class="search-box">
-            <input type="text" id="search-input" placeholder="🔍 Pesquisar projetos...">
-        </div>
-    </div>
-    
-    <!-- Grid onde os projetos vão aparecer -->
-    <div id="projects-grid" class="projects-grid">
-        <!-- Os cards serão inseridos aqui via JavaScript -->
-    </div>
-    
-    <!-- Mensagem quando não há resultados -->
-    <div id="no-results" class="no-results" style="display: none;">
-        <p>😕 Nenhum projeto encontrado</p>
-    </div>
-</section>
-
-<!-- Modal (fora da secção) -->
-<div id="project-modal" class="modal">
-    <div class="modal-content">
-        <span class="modal-close">×</span>
-        <div id="modal-body">
-            <!-- Conteúdo do modal será inserido aqui -->
-        </div>
-    </div>
-</div>
-
-    <!-- CONTACTO -->
-    <section id="contact" class="contact">
-        <h2>Contacto</h2>
-        <p>Em breve terás um formulário aqui!</p>
+        <div id="projects-grid" class="projects-grid"></div>
+        <div id="no-results" class="no-results">😕 Nenhum projeto encontrado</div>
     </section>
 
-    <!-- CONTADOR DE VISITAS -->
-    <section class="about">
+    <div id="project-modal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <div id="modal-body"></div>
+        </div>
+    </div>
+
+    <section class="visit-section">
         <div class="visit-counter">
             <p>👋 Visitaste esta página <strong id="visit-count">0</strong> vezes</p>
             <p class="last-visit">Última visita: <span id="last-visit">Primeira vez!</span></p>
@@ -111,9 +75,8 @@
         </div>
     </section>
 
-    <!-- FOOTER -->
     <footer>
-        <p style="color: rgb(255, 255, 255);">© <span id="year"></span> Martim Morais. Feito com ❤️ e ☕</p>
+        <p>© 2026 Martim Morais. Feito com ❤️ e ☕</p>
     </footer>
 
     <script src="script.js"></script>
