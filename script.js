@@ -302,16 +302,16 @@ function getVisitsToday() {
 const projects = [
     {
         id: 1,
-        title: 'E-commerce Website',
+        title: 'Site NBA',
         category: 'web',
-        description: 'Loja online completa com carrinho de compras',
+        description: 'Site online para saber um pouco mais da história do Basquete',
         image: 'https://images.unsplash.com/photo-1557821552-17105176677c?w=500&h=300&fit=crop',
         tags: ['HTML', 'CSS', 'JavaScript', 'API'],
         link: 'https://github.com/',
         longDescription: 'Website de e-commerce completo com sistema de carrinho, checkout, e integração com API de pagamentos. Interface moderna e responsiva.',
         features: ['Carrinho de compras', 'Sistema de pagamento', 'Área de utilizador', 'Gestão de produtos'],
         technologies: ['HTML5', 'CSS3', 'JavaScript ES6+', 'LocalStorage', 'Fetch API',"Stripe"],
-        date: '2025-01'
+        date: '2025-03'
     },
     {
         id: 2,
