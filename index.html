@@ -3,12 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Martim Morais - Portfolio</title>
+    <meta name="description" content="Portfolio de Martim Morais - Desenvolvedor Web">
+    <title>O Meu Portfolio</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- HEADER -->
     <header>
         <nav>
+            <button id="theme-toggle" class="theme-toggle" aria-label="Alternar tema">
+                <span class="icon-light">☀️</span>
+                <span class="icon-dark">🌙</span>
+            </button>
             <h1>Martim Morais</h1>
             <ul>
                 <li><a href="#about">Sobre Mim</a></li>
@@ -17,80 +23,101 @@
             </ul>
         </nav>
     </header>
-
-    <button id="theme-toggle" class="theme-toggle" aria-label="Alternar tema">
-        <span class="icon-light">☀️</span>
-        <span class="icon-dark">🌙</span>
-    </button>
-
+ 
+    <!-- HERO / INTRO -->
     <section class="hero">
-        <h1>Olá! Sou Martim Morais 👋</h1>
-        <p>Desenvolvedor Web | Estudante | Aprendiz</p>
+        <h1>Olá sou o Martim Morais 👋</h1>
+        <p>Desenvolvedor Web | Estudante | Criativo</p>
     </section>
-
+ 
+    <!-- SOBRE MIM -->
     <section id="about" class="about">
-       <h2>Sobre Mim</h2>
-    
-    <p>
-        Sou um aprendiz de programação apaixonado por tecnologia e desenvolvimento.
-        Gosto de criar mini projetos para praticar e evoluir as minhas competências.
-    </p>
-
-    
-
+        <h2>Sobre Mim</h2>
+        <p>Olá o meu nome é Martim Morais, tenho 17 anos, sou de um curso de programador de informatica.</p>
+        <!-- Aqui vão adicionar componentes interativos na próxima aula -->
+ 
+        <!-- RELÓGIO -->
         <div class="clock-container">
-            <div class="clock">
-                <span id="hours">00</span>:<span id="minutes">00</span>:<span id="seconds">00</span>
-            </div>
-            <button id="format-toggle" class="format-toggle">12h/24h</button>
+        <div class="clock">
+            <span id="hours">00</span>:<span id="minutes">00</span>:<span id="seconds">00</span>
         </div>
-        <div id="date" class="date"></div>
+        <button id="format-toggle" class="format-toggle">12h/24h</button>
+        </div>
+        <!-- CONTADOR DE VISITAS -->
+        <div class="visit-counter">
+        <p>👋 Visitaste esta página <strong id="visit-count">0</strong> vezes</p>
+        <p class="last-visit">Última visita: <span id="last-visit">Primeira vez!</span></p>
+        <button id="reset-counter" class="reset-btn">🔄 Reset</button>
+        </div>
     </section>
-
+ 
+    <!-- PROJETOS -->
     <section id="projects" class="projects">
-        <h2>Meus Projetos</h2>
-        <div class="projects-controls">
-            <div class="filter-buttons">
-                <button class="filter-btn active" data-category="all">Todos <span class="count">0</span></button>
-                <button class="filter-btn" data-category="web">Web <span class="count">0</span></button>
-                <button class="filter-btn" data-category="mobile">Mobile <span class="count">0</span></button>
-                <button class="filter-btn" data-category="design">Design <span class="count">0</span></button>
-            </div>
-            
-            <div class="search-box">
-                <input type="text" id="search-input" placeholder="Pesquisar projetos...">
-            </div>
+    <h2>Meus Projetos</h2>
+   
+    <!-- Barra de controlo (filtros + pesquisa) -->
+    <div class="projects-controls">
+        <div class="filter-buttons">
+            <button class="filter-btn active" data-category="all">
+                Todos <span class="count">0</span>
+            </button>
+            <button class="filter-btn" data-category="web">
+                Web <span class="count">0</span>
+            </button>
+            <button class="filter-btn" data-category="mobile">
+                Mobile <span class="count">0</span>
+            </button>
+            <button class="filter-btn" data-category="design">
+                Design <span class="count">0</span>
+            </button>
         </div>
-        
-        <div id="projects-grid" class="projects-grid"></div>
-        <div id="no-results" class="no-results">😕 Nenhum projeto encontrado</div>
-    </section>
-
-    <div id="project-modal" class="modal">
-        <div class="modal-content">
-            <span class="modal-close">&times;</span>
-            <div id="modal-body"></div>
+       
+        <div class="search-box">
+            <input type="text" id="search-input" placeholder="Pesquisar projetos...">
         </div>
     </div>
-<section id="contact" class="contact">
+   
+    <!-- Grid onde os projetos vão aparecer -->
+    <div id="projects-grid" class="projects-grid">
+        <!-- Os cards serão inseridos aqui via JavaScript -->
+    </div>
+   
+    <!-- Mensagem quando não há resultados -->
+        <div id="no-results" class="no-results" style="display: none;">
+            <p>😕 Nenhum projeto encontrado</p>
+        </div>
+    </section>
+ 
+    <!-- Modal (fora da secção) -->
+    <div id="project-modal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close">×</span>
+            <div id="modal-body">
+            <!-- Conteúdo do modal será inserido aqui -->
+            </div>
+        </div>
+    </div>
+ 
+    <!-- CONTACTO -->
+    <section id="contact" class="contact">
     <div class="section-header">
         <h2>📧 Entra em Contacto</h2>
         <p>Tens alguma questão ou projeto em mente? Envia-me uma mensagem!</p>
     </div>
-
+ 
     <div class="contact-container">
         <!-- Formulário -->
         <form id="contact-form" class="contact-form" novalidate>
-            
+           
             <!-- Nome -->
             <div class="form-group">
                 <label for="name">
                     Nome Completo <span class="required">*</span>
                 </label>
                 <div class="input-wrapper">
-                    <input 
-                        type="text" 
-                        id="name" 
+                    <input
+                        type="text"
+                        id="name"
                         name="name"
                         placeholder="O teu nome"
                         required
@@ -100,16 +127,16 @@
                 </div>
                 <span class="error-message"></span>
             </div>
-
+ 
             <!-- Email -->
             <div class="form-group">
                 <label for="email">
                     Email <span class="required">*</span>
                 </label>
                 <div class="input-wrapper">
-                    <input 
-                        type="email" 
-                        id="email" 
+                    <input
+                        type="email"
+                        id="email"
                         name="email"
                         placeholder="teu@email.com"
                         required
@@ -118,7 +145,21 @@
                 </div>
                 <span class="error-message"></span>
             </div>
-
+           
+            <!-- Adicionar campo telefone (opcional) -->
+             <div class="form-group">
+                <label for="phone">Telefone</label>
+                 <div class="input-wrapper">
+                     <input
+                         type="tel"
+                         id="phone"
+                        name="phone"
+                        placeholder="+351 912 345 678">
+                    <span class="input-icon"></span>
+                </div>
+                <span class="error-message"></span>
+            </div>
+ 
             <!-- Assunto -->
             <div class="form-group">
                 <label for="subject">
@@ -137,15 +178,15 @@
                 </div>
                 <span class="error-message"></span>
             </div>
-
+ 
             <!-- Mensagem -->
             <div class="form-group">
                 <label for="message">
                     Mensagem <span class="required">*</span>
                 </label>
                 <div class="input-wrapper">
-                    <textarea 
-                        id="message" 
+                    <textarea
+                        id="message"
                         name="message"
                         placeholder="Escreve aqui a tua mensagem..."
                         required
@@ -159,50 +200,46 @@
                     <span id="char-count">0</span> / 500 caracteres
                 </div>
             </div>
-
+ 
             <!-- Botão Submit -->
             <button type="submit" class="submit-btn" id="submit-btn">
                 <span class="btn-text">Enviar Mensagem</span>
                 <span class="btn-icon">📨</span>
             </button>
-
+ 
         </form>
-
+ 
         <!-- Info Adicional -->
         <div class="contact-info">
             <h3>Outras Formas de Contacto</h3>
             <div class="info-item">
                 <span class="icon">📧</span>
-                <span>martimmorais162022@gmail.com</span>
+                <span>f660399@gmail.com</span>
             </div>
             <div class="info-item">
                 <span class="icon">📱</span>
-                <span>+351 93 474 8097</span>
+                <span>+351 967 401 546</span>
             </div>
             <div class="info-item">
                 <span class="icon">📍</span>
                 <span>Lisboa, Portugal</span>
             </div>
-            
+           
             <div class="social-links">
-                <a href="https://github.com/martimmorais162022-boop" target="_blank">GitHub</a>
+                <a href="#" target="_blank">GitHub</a>
                 <a href="#" target="_blank">LinkedIn</a>
-                <a href="#" target="_blank">Twitter</a>
+                <a href="#" target="_blank">Instagram</a>
             </div>
         </div>
     </div>
-</section>    <section class="visit-section">
-        <div class="visit-counter">
-            <p>👋 Visitaste esta página <strong id="visit-count">0</strong> vezes</p>
-            <p class="last-visit">Última visita: <span id="last-visit">Primeira vez!</span></p>
-            <button id="reset-counter" class="reset-btn">🔄 Reset</button>
-        </div>
     </section>
-
+    <!-- Container de Toasts -->
+    <div id="toast-container" class="toast-container"></div>
+    <!-- FOOTER -->
     <footer>
-        <p>© 2026 Martim Morais. Feito com ❤️ e ☕</p>
+        <p style="color: black; font-size: large; text-align: center;">© <span id="year"></span>Martim Morais Feito com ❤️ e ☕</p>
     </footer>
-
     <script src="script.js"></script>
 </body>
 </html>
+ 
